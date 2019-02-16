@@ -9,13 +9,27 @@ var yoodCommands = {
         return this
     },
 
-    fillFields: function (field) {
-        //Fill fields function for boundary value analysis
-        if (field.wID) {
-            this
-                //wid
-                .setValue('@wID', field.wID)
-        }
+    createUser: function (field) {
+
+        this
+            .clickText('Sign up')
+            .waitForElementPresent('.modal-title', 5000)
+            .clickText('Sign up with Email')
+            .waitForElementPresent('.control-label', 5000)
+
+            // fill user info
+            .setValue('@firstName', 'Tim')
+            .setValue('@lastName', 'Granger')
+            .setValue('@email', 'Cap.T.Granger@gmail.com')
+            .setValue('@password', '12345678')
+            .setValue('@month', '8')
+            .setValue('@day', '31')
+            .setValue('@year', '1952')
+
+            // submit info and verify account created
+            .click('@login')
+            .waitForElementPresent('@userMenus', 5000)
+
 
         return this
     },
@@ -27,7 +41,7 @@ var yoodCommands = {
             .waitForElementVisible('body', 1000)
 
             //The action
-            .setValue('@email', 'tGranger@gmail.com')
+            .setValue('@email', 'Cap.T.Granger@gmail.com')
             .setValue('@password', '12345678')
             .click('@login')
 
@@ -64,12 +78,15 @@ module.exports = {
         dropDown: '.dropdown-menu',
         password: 'input[name="password"]',
         email: 'input[name="email"]',
-        password: 'input[name="password"]',
         firstName: 'input[name="firstName"]',
         lastName: 'input[name="lastName"]',
+        gender: 'select[name="gender"]',
         month: 'select[name="month"]',
         day: 'select[name="day"]',
         year: 'select[name="year"]',
+        location: 'input[name="location"]',
+        describe: '[name=info]',
+
 
         logout: {
             selector: '(//button[@class="btn btn-link"])[2]',
