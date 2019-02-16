@@ -86,16 +86,25 @@ module.exports = {
         year: 'select[name="year"]',
         location: 'input[name="location"]',
         describe: '[name=info]',
+        file: 'input[type="file"]',
+        userMenus: '#basic-nav-dropdown',
+        Search: '.form-control',
 
 
         logout: {
             selector: '(//button[@class="btn btn-link"])[2]',
             locateStrategy: 'xpath'
         },
+        photoTrash: {
+            selector: '(//i)[4]',
+            locateStrategy: 'xpath'
+        },
+        addDocument: {
+            selector: '(//button)[7]',
+            locateStrategy: 'xpath'
+        },
 
-
-        userMenus: '#basic-nav-dropdown',
-        Search: '.form-control'
+        
 
 
 

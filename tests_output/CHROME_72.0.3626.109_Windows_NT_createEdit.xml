@@ -5,9 +5,9 @@
 
   <testsuite name="createEdit"
     errors="0" failures="0" hostname="" id="" package="createEdit" skipped="0"
-    tests="2" time="20.96" timestamp="">
+    tests="2" time="22.36" timestamp="">
   
-    <testcase name="Create and Edit" classname="createEdit" time="14.48" assertions="12">
+    <testcase name="Create and Edit" classname="createEdit" time="15.77" assertions="12">
 
     
 
@@ -34,7 +34,7 @@
     
     </testcase>
   
-    <testcase name="verify edit happened then add profile photo and document" classname="createEdit" time="6.479" assertions="18">
+    <testcase name="verify edit was successful" classname="createEdit" time="6.590" assertions="18">
 
     
 

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="2">
+
+  <testsuite name="profilePhoto"
+    errors="0" failures="0" hostname="" id="" package="profilePhoto" skipped="0"
+    tests="2" time="30.11" timestamp="">
+  
+    <testcase name="Add a profile photo" classname="profilePhoto" time="10.84" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Add Documents" classname="profilePhoto" time="19.27" assertions="17">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>
