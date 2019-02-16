@@ -19,20 +19,40 @@ var yoodCommands = {
 
         return this
     },
-    userLogin: function (userLogin){
-
+    userLogin: function (userLogin) {
+        //The set up
         this
-        .clickText('Log in')
-        .waitForElementPresent('.modal-title', 5000)
-        .waitForElementVisible('body', 1000)
-        .setValue('@email', 'tGranger@gmail.com')
-        .setValue('@password', '12345678')
-        .click('@login')
-        .waitForElementPresent('@userMenus')
+            .clickText('Log in')
+            .waitForElementPresent('h4.modal-title', 5000)
+            .waitForElementVisible('body', 1000)
+
+            //The action
+            .setValue('@email', 'tGranger@gmail.com')
+            .setValue('@password', '12345678')
+            .click('@login')
+
+            //The Verification
+            .waitForElementPresent('@userMenus')
 
         return this
     },
-    
+    userLogout: function (userLogout) {
+        // The set up
+        this
+            .waitForElementPresent('@userMenus')
+            .click('@userMenus')
+            .waitForElementPresent('@dropDown')
+
+        //The action
+        this.api.useXpath()
+        this.click('@logout')
+        this.api.useCss()
+
+        //The varification
+        this.waitForElementNotPresent('@userMenus')
+        return this
+    },
+
 }
 //Page Objects
 module.exports = {
@@ -41,6 +61,7 @@ module.exports = {
     elements: {
 
         login: 'button[type="submit"]',
+        dropDown: '.dropdown-menu',
         password: 'input[name="password"]',
         email: 'input[name="email"]',
         password: 'input[name="password"]',
@@ -50,8 +71,8 @@ module.exports = {
         day: 'select[name="day"]',
         year: 'select[name="year"]',
 
-        randomSelector: {
-            selector: ';kljasdhflkjashdfklajsdhf',
+        logout: {
+            selector: '(//button[@class="btn btn-link"])[2]',
             locateStrategy: 'xpath'
         },
 
