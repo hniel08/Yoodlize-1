@@ -19,16 +19,16 @@ module.exports = {
     .waitForElementPresent('.control-label', 5000)
 
     // fill user info
-    .setValue('@firstName', 'Timothy')
-    .setValue('@lastName','Granger')
-    .setValue('@email', 'tgranger@consitiution.com')
+    .setValue('@firstName', 'Tom')
+    .setValue('@lastName','Adamson')
+    .setValue('@email', 'tAdamson@consitiution.com')
     .setValue('@password', '12345678')
     .setValue('@month', '8')
     .setValue('@day', '31')
     .setValue('@year','1952')
 
     // submit info and verify account created
-    .click('@standardLogin')
+    .click('@login')
     .waitForElementPresent('@userMenus', 5000)
 
 }
