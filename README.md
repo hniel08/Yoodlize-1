@@ -1,7 +1,7 @@
-# Yoodalize
+# Yoodlize
 First automation in a simulated live environment
 
-** Work in Progress **
+**Work in Progress**
 
 Test is designed to Automate an entire account creation and linking.
 
@@ -16,7 +16,7 @@ Currently complete
 6. Link Payout method
 
 
-**upcoming additions **
+**upcoming additions**
 
 Post Item,
 Rent Item,
