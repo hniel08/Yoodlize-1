@@ -18,10 +18,10 @@ Currently complete
 
 **upcoming additions **
 
-Post Item
-Rent Item
-Send Message
-Recieve Message
+Post Item,
+Rent Item,
+Send Message,
+Recieve Message,
 
 **Desired changes but working on figureing out**
 more flexability on the users part, Rather then just the one e-mail address
