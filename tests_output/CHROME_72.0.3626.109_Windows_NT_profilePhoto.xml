@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
-            failures="0"
+            failures="1"
             tests="2">
 
   <testsuite name="profilePhoto"
-    errors="0" failures="0" hostname="" id="" package="profilePhoto" skipped="0"
-    tests="2" time="30.11" timestamp="">
+    errors="0" failures="1" hostname="" id="" package="profilePhoto" skipped="0"
+    tests="2" time="22.29" timestamp="">
   
-    <testcase name="Add a profile photo" classname="profilePhoto" time="10.84" assertions="6">
+    <testcase name="Add a profile photo" classname="profilePhoto" time="13.40" assertions="6">
 
     
 
@@ -22,7 +22,7 @@
     
     </testcase>
   
-    <testcase name="Add Documents" classname="profilePhoto" time="19.27" assertions="17">
+    <testcase name="Add Documents" classname="profilePhoto" time="8.892" assertions="8">
 
     
 
@@ -36,25 +36,7 @@
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+      <failure message="Timed out while waiting for element &lt;.DocumentVerification-container-3d-DR&gt; to be present for 1000 milliseconds. - expected [0;32m&#34;found&#34;[0m but got: [0;31m&#34;not found&#34;[0m">    at Object.Add Documents (C:\Users\Equa1\Desktop\Dev\Yood\tests\profilePhoto.js:45:20)</failure>
 
     
     </testcase>

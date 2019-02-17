@@ -17,11 +17,11 @@ module.exports = {
             .click('@userMenus')
             .clickText('Edit Profile')
             .waitForElementPresent('.EditProfile-container-clc6i')
-            .clickText('Profile Photo')
+            .click('@photoMenu')
 
             // add a photo
             .setValue('input[type="file"]', require('path').resolve('/Users/Equa1/Desktop/Dev/Yood/images/userPhoto.jpg'))
-            client.pause(1000)
+        client.pause(1000)
 
         // verification
         client.waitForElementPresent('@photoTrash')
@@ -29,39 +29,39 @@ module.exports = {
     },
 
     'Add Documents': browser => {
-        //log in to account
-         client.userLogout()
-            .userLogin()
-            
+        browser.maximizeWindow()
 
-            //Navigate to precondition
+        //Navigate to add documents
+        client
             .click('@userMenus')
             .clickText('Edit Profile')
-            .clickText('Trust and Verification')
-            .getLocationInView("@addDocument")
+            .waitForElementPresent('@trustMenu')
+            .click('@trustMenu')
+            .waitForElementPresent('@addDocument')
             .click('@addDocument')
 
-            //Test
-            client.waitForElementPresent('.DocumentVerification-container-3d-DR',1000)
+        //Test
+        client.waitForElementPresent('input[type="file"]', 5000)
             .setValue('input[type="file"]', require('path').resolve('/Users/Equa1/Desktop/Dev/Yood/images/doc1.jpg'))
-            client.waitForElementPresent('.DocumentList-listPhotoMedia-1_GqT')
+        client.waitForElementPresent('.DocumentList-listPhotoMedia-1_GqT')
             .setValue('input[type="file"]', require('path').resolve('/Users/Equa1/Desktop/Dev/Yood/images/doc2.pdf'))
-            client.waitForElementPresent('.listPhotoContainer')
-            client.pause(5000)
-            
-            //verification
-            client.userLogout()
-            client.userLogin()
-            
+        client.waitForElementPresent('.listPhotoContainer')
+        client.pause(5000)
+
+        //verification
+        client.userLogout()
+        client.userLogin()
             .click('@userMenus')
             .clickText('Edit Profile')
-            .clickText('Trust and Verification')
+            .waitForElementPresent('@trustMenu')
+            .click('@trustMenu')
+            .waitForElementPresent('@addDocument')
             .getLocationInView("@addDocument")
             .click('@addDocument')
-            client.waitForElementPresent('.listPhotoContainer',1000)
-            
-    
+        client.waitForElementPresent('.listPhotoContainer', 1000)
 
-client.end()
+
+
+        client.end()
     },
 }

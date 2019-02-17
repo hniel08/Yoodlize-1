@@ -20,7 +20,7 @@ var yoodCommands = {
             // fill user info
             .setValue('@firstName', 'Tim')
             .setValue('@lastName', 'Granger')
-            .setValue('@email', 'Cap.T.Granger@gmail.com')
+            .setValue('@email', 'shel.proctor@yahoo.com')
             .setValue('@password', '12345678')
             .setValue('@month', '8')
             .setValue('@day', '31')
@@ -41,7 +41,7 @@ var yoodCommands = {
             .waitForElementVisible('body', 1000)
 
             //The action
-            .setValue('@email', 'Cap.T.Granger@gmail.com')
+            .setValue('@email', 'shel.proctor@yahoo.com')
             .setValue('@password', '12345678')
             .click('@login')
 
@@ -89,6 +89,14 @@ module.exports = {
         file: 'input[type="file"]',
         userMenus: '#basic-nav-dropdown',
         Search: '.form-control',
+        address1: 'input[name="address1"]',
+        city: 'input[name="city"]',
+        state: 'input[name="state"]',
+        zip: 'input[name="zipcode"]',
+        defaultPayout: 'span[class="label label-success"]',
+        paypal: 'input[value="1"]',
+
+
 
 
         logout: {
@@ -103,10 +111,27 @@ module.exports = {
             selector: '(//button)[7]',
             locateStrategy: 'xpath'
         },
+        next: {
+            selector: '(//button[@type="submit"])[3]',
+            locateStrategy: 'xpath'
+        },
+        back: {
+            selector: '(//button[@type="submit"])[3]',
+            locateStrategy: 'xpath'
+        },
 
-        
+        payout: {
+            selector: '(//a[@class="AccountSettingsSideMenu-sideNavitem-hFcOX"])[1]',
+            locateStrategy: 'xpath'
+        },
 
-
-
+        trustMenu: {
+            selector: '(//div[@class="sc-jqCOkK hRBjNq sc-gqjmRU kYEOFd"])[3]',
+            locateStrategy: 'xpath'
+        },
+        photoMenu: {
+            selector: '(//div[@class="sc-jqCOkK hRBjNq sc-gqjmRU kYEOFd"])[2]',
+            locateStrategy: 'xpath'
+        },
     }
 }
