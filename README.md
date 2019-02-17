@@ -23,5 +23,5 @@ Rent Item,
 Send Message,
 Recieve Message,
 
-**Desired changes but working on figureing out**
+**Desired changes** 
 more flexability on the users part, Rather then just the one e-mail address
