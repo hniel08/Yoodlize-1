@@ -50,6 +50,23 @@ var yoodCommands = {
 
         return this
     },
+    hannahLogin: function (userLogin) {
+        //The set up
+        this
+            .clickText('Log in')
+            // .waitForElementPresent('h4.modal-title', 5000)
+            // .waitForElementVisible('body', 1000)
+
+            //The action
+            .setValue('@email', 'hniel08@gmail.com')
+            .setValue('@password', 'moonstone')
+            .click('@login')
+
+            //The Verification
+            .waitForElementPresent('@userMenus')
+
+        return this
+    },
     userLogout: function (userLogout) {
         // The set up
         this
@@ -96,8 +113,28 @@ module.exports = {
         defaultPayout: 'span[class="label label-success"]',
         paypal: 'input[value="1"]',
 
+        //selectors for adding an item
+        //description
+        dTitle: 'input[placeholder=Title]',
+        dDescription: 'textarea[placeholder="Enter Description here..."]',
+
+        //pick a category will be click by text
+
+        //address
+        streetAddress: 'input[placeholder="Street Address"]',
+        optionalAddress: 'input[placeholder="Apt, suite, Bldg, (optional)"]',
+        city: 'input[placeholder="City"]',
+        state: 'input[placeholder="State"]',
+        zipcode: 'input[placeholder="Zipcode"]',
+
+        //price
+
+        price: 'input[class="sc-hORach AOFbL"]',
 
 
+        // buttons
+        next: 'button[class="sc-esjQYD XsuRc sc-ifAKCX kvYMhQ"]',
+        back: 'button[class="sc-esjQYD hqodhR sc-ifAKCX kvYMhQ"]',
 
         logout: {
             selector: '(//button[@class="btn btn-link"])[2]',
