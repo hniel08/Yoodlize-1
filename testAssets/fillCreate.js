@@ -1,7 +1,7 @@
 module.exports = (client, email, password, first, last, month, day, year, location, describe) => {
     client
 
-        // fill user info
+        // fill user info to create an account
         
         
         .setValue('@email', email) 

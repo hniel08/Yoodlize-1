@@ -2,7 +2,7 @@ module.exports = (client, first, last, gender, month, day, year, location, descr
     client
 
         // fill user info to be edited
-        .clearValue('@firstName')
+        .clearValue('@firstName push')
         .setValue('@firstName', first)
         .setValue('@lastName', last)
         .setValue('@gender', gender)
