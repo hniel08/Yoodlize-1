@@ -1,5 +1,6 @@
 var client = {}
-// var data = require('../testAssets/dataDriven')
+var fillLogin = require('../testAssets/fillLogin.js')
+var fillPayout = require('../testAssets/fillPayout.js')
 module.exports = {
     beforeEach: browser => {
         client = browser.page.objects()
@@ -11,13 +12,25 @@ module.exports = {
     },
 
     'Send Email address verification': browser => {
-        client.userLogin()
+        //Login 
+        client
+            .clickText('Log in')
+            .waitForElementPresent('h4.modal-title', 5000)
+            .waitForElementVisible('body', 1000)
 
-            //Navigate to Trust page
-            .click('@userMenus')
+        // Fill Out Email And Password
+        fillLogin(client, 'E-mail', 'Password')
+
+        client.click('@login')
+        client.pause(2000)
+
+
+        //Navigate to Trust page
+        client.click('@userMenus')
             .clickText('Edit Profile')
             .clickText('Trust and Verification')
         client.pause(2000)
+
             // Request the verification e-mail
             .clickText('Verify Email')
         client.pause(5000)
@@ -40,24 +53,22 @@ module.exports = {
 
         client.pause(1000)
             .waitForElementPresent('.panel-heading', 1000)
-            .setValue('@address1', '123 Fake st.')
-            .setValue('@city', 'Huntington Beach')
-            .setValue('@state', 'Ca')
-            .setValue('@zip', '92646')
 
-            .click('@next')
+        // Fill Out Payment Address
+        fillPayout(client, 'Address', 'City', 'State', 'Zip')
+        client.click('@next')
             .waitForElementPresent('.panel-body', 1000)
             .waitForElementPresent('@paypal')
-            .click('@paypal'),
-            client.click('@next')
+            .click('@paypal')
+            .click('@next')
 
 
-                .waitForElementPresent('input[name="payEmail"]')
-                .setValue('input[name="payEmail"]', 'AJsPayPal@gmail.com')
-                .click('@next')
+            .waitForElementPresent('@payEmail')
+            .setValue('@payEmail', 'E-mail')
+            .click('@next')
 
-                //Verification
-                .waitForElementPresent('@defaultPayout')
+            //Verification
+            .waitForElementPresent('@defaultPayout')
 
 
         browser.end()

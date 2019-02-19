@@ -20,7 +20,7 @@ var yoodCommands = {
             // fill user info
             .setValue('@firstName', 'Tim')
             .setValue('@lastName', 'Granger')
-            .setValue('@email', 'cat@fake.com')
+            .setValue('@email', 'tom@fake.com')
             .setValue('@password', '12345678')
             .setValue('@month', '8')
             .setValue('@day', '31')
@@ -41,7 +41,7 @@ var yoodCommands = {
             .waitForElementVisible('body', 1000)
 
             //The action
-            .setValue('@email', 'cat@fake.com')
+            .setValue('@email', 'tom@fake.com')
             .setValue('@password', '12345678')
             .click('@login')
 
@@ -89,6 +89,7 @@ module.exports = {
         file: 'input[type="file"]',
         userMenus: '#basic-nav-dropdown',
         Search: '.form-control',
+        payEmail: 'input[name="payEmail"]',
         address1: 'input[name="address1"]',
         city: 'input[name="city"]',
         state: 'input[name="state"]',
@@ -96,8 +97,10 @@ module.exports = {
         defaultPayout: 'span[class="label label-success"]',
         paypal: 'input[value="1"]',
 
-
-
+    loginText: {
+        selector:'(//div[@class="sc-jqCOkK lgUaOg sc-gqjmRU fptSCa"])[3]',
+        locateStrategy: 'xpath'
+    },
 
         logout: {
             selector: '(//button[@class="btn btn-link"])[2]',

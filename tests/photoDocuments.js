@@ -1,5 +1,5 @@
 var client = {}
-// var data = require('../testAssets/dataDriven')
+var fillLogin = require('../testAssets/fillLogin.js')
 module.exports = {
     beforeEach: browser => {
         client = browser.page.objects()
@@ -12,25 +12,33 @@ module.exports = {
     'Add a profile photo and documents': browser => {
         //log in to account
         browser.maximizeWindow()
-        client.userLogin()
+        client.clickText('Log in')
+            .waitForElementPresent('h4.modal-title', 5000)
+            .waitForElementVisible('body', 1000)
+
+            // Fill Out Email And Password
+            fillLogin(client, 'E-mail', 'Password')
+            client.waitForElementPresent('@userMenus')
+        
 
             // navigate to add profile photo page
-            .click('@userMenus')
+            client.click('@userMenus')
             .clickText('Edit Profile')
             .waitForElementPresent('.EditProfile-container-clc6i')
             .clickText('Profile Photo')
 
             // add a photo
             .setValue('input[type="file"]', require('path').resolve('/Users/Equa1/Desktop/Dev/Yood/images/userPhoto.jpg'))
-        
+
         // verification
+        client.pause(2000)
         client.waitForElementPresent('@photoTrash')
-        
-        
-        //Navigate to adding Documents
-        .clickText('Trust and Verification')
-        .waitForElementPresent('@addDocument')
-        .click('@addDocument')
+
+
+            //Navigate to adding Documents
+            .clickText('Trust and Verification')
+            .waitForElementPresent('@addDocument')
+            .click('@addDocument')
 
 
         //Test
@@ -43,8 +51,16 @@ module.exports = {
 
         //verification
         client.userLogout()
-        client.userLogin()
-            .click('@userMenus')
+        .clickText('Log in')
+            .waitForElementPresent('h4.modal-title', 5000)
+            .waitForElementVisible('body', 1000)
+
+            // Fill Out Email And Password
+            fillLogin(client, 'E-mail', 'Password')
+            client.waitForElementPresent('@userMenus')
+
+
+            client.click('@userMenus')
             .clickText('Edit Profile')
             .clickText('Trust and Verification')
             .waitForElementPresent('@addDocument')

@@ -1,5 +1,7 @@
 var client = {}
-// var data = require('../testAssets/dataDriven')
+var fillCreate = require('../testAssets/fillCreate.js')
+var fillEdit = require('../testAssets/fillEdit.js')
+var fillLogin = require('../testAssets/fillLogin.js')
 module.exports = {
     beforeEach: browser => {
         client = browser.page.objects()
@@ -9,59 +11,71 @@ module.exports = {
     after: browser => {
         browser.end()
     },
+
+
     'Create and Edit': browser => {
         client
-            //create and verify successful creation
-            .createUser()
-        client.userLogout()
-        client.userLogin()
+            //The set up
+            .clickText('Sign up')
+            .waitForElementPresent('.SignupModal-root-3YXgm')
+            .clickText('Sign up with Email')
 
-        //navigate to Edit fields
+
+        // The action
+        //
+        fillCreate(client, 'E-mail', 'Password', 'First Name', 'Last Name', 'Month', 'Day', 'Year')
+        client.click('@login')
+        client.userLogout()
+
+            //the verification
+            .click('@loginText')
+        fillLogin(client, 'E-mail', 'Password')
+        client.click('@login')
+            .waitForElementPresent('@userMenus')
+
+
+        //Navigate to Edit fields
         client.waitForElementPresent('.container-fluid', 5000)
 
             .click('@userMenus')
             .clickText('Edit Profile')
             .waitForElementPresent('.EditProfile-container-clc6i')
 
-            //Edit the account
+            //The Action
             .clearValue('@firstName')
-            .setValue('@firstName', 'Shelby')
             .clearValue('@lastName')
-            .setValue('@lastName', 'Proctor')
             .setValue('@gender', 'f')
-            .setValue('@month', '7')
-            .setValue('@day', '15')
-            .setValue('@year', '1984')
             .clearValue('@location')
-            .setValue('@location', 'The defiance in deep space')
             .clearValue('@describe')
-            .setValue('@describe', 'Former fleet admiral, trying to make a couple extra bucks')
 
-            //Save changes
-            .clickText('Save')
+            //Fill fields to Edit
+        fillEdit(client, 'First', 'Last', 'Sex', 'Month', 'Day', 'Year', 'Location', 'Description')
+
+        //Save changes
+        client.clickText('Save')
     },
 
 
-    //Now verify changes were made and add photo
+    //Now verify changes were made
     'verify edit was successful': browser => {
 
         client.userLogout(),
             client.waitForElementPresent('.container-fluid', 5000)
 
-        client.userLogin(),
-            client.waitForElementPresent('.container-fluid', 5000)
+                .click('@loginText')
 
-                .click('@userMenus')
-                .clickText('Edit Profile')
-                .waitForElementPresent('.EditProfile-container-clc6i')
-        client.expect.element('@firstName').to.have.value.that.equals('Shelby')
-        client.expect.element('@lastName').to.have.value.that.equals('Proctor')
-        client.expect.element('@gender').to.have.value.that.equals('Female')
-        client.expect.element('@month').to.have.value.that.equals('6')
-        client.expect.element('@day').to.have.value.that.equals('15')
-        client.expect.element('@year').to.have.value.that.equals('1984')
-        client.expect.element('@location').to.have.value.that.equals('The defiance in deep space')
-        client.expect.element('@describe').to.have.value.that.equals('Former fleet admiral, trying to make a couple extra bucks')
+        //Fill Email and Password
+        fillLogin(client, 'E-mail', 'Password')
+        client.click('@login')
+            .waitForElementPresent('@userMenus')
+
+            .click('@userMenus')
+            .clickText('Edit Profile')
+            .waitForElementPresent('.EditProfile-container-clc6i')
+
+        // Fill fileds to verify
+        client.expect.element('@firstName').to.have.value.that.equals('First')
+        client.expect.element('@lastName').to.have.value.that.equals('Last')
 
 
 
