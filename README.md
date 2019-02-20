@@ -3,7 +3,8 @@ First automation in a simulated live environment
 
 **Work in Progress**
 
-Test is designed to Automate an entire account creation and linking.
+Test is designed to Automate an entire account creation and linking. 
+To execute fill the inputs in the fillData.js file.
 
 Currently complete
 1. Create account
