@@ -1,4 +1,4 @@
-# Yoodlize
+# Yoodlize 1.0
 First automation in a simulated live environment
 
 **Work in Progress**
@@ -11,7 +11,6 @@ Currently complete
 3. Profile Photo
 4. Document uploading
 5. Request E-mail for verification 
-(still working around navigating yahoo to complete the verification, origionally was gmail but could not figure out how to open an email)
 
 6. Link Payout method
 
@@ -21,7 +20,4 @@ Currently complete
 Post Item,
 Rent Item,
 Send Message,
-Recieve Message,
-
-**Desired changes** 
-more flexability on the users part, Rather then just the one e-mail address
+Recieve Message
