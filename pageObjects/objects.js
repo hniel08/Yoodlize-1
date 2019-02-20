@@ -97,10 +97,10 @@ module.exports = {
         defaultPayout: 'span[class="label label-success"]',
         paypal: 'input[value="1"]',
 
-    loginText: {
-        selector:'(//div[@class="sc-jqCOkK lgUaOg sc-gqjmRU fptSCa"])[3]',
-        locateStrategy: 'xpath'
-    },
+        loginText: {
+            selector: '(//div[@class="sc-jqCOkK lgUaOg sc-gqjmRU fptSCa"])[3]',
+            locateStrategy: 'xpath'
+        },
 
         logout: {
             selector: '(//button[@class="btn btn-link"])[2]',

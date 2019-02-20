@@ -2,6 +2,8 @@ var client = {}
 var fillCreate = require('../testAssets/fillCreate.js')
 var fillEdit = require('../testAssets/fillEdit.js')
 var fillLogin = require('../testAssets/fillLogin.js')
+var fillData = require('../testAssets/fillData.js')
+
 module.exports = {
     beforeEach: browser => {
         client = browser.page.objects()
@@ -14,6 +16,7 @@ module.exports = {
 
 
     'Create and Edit': browser => {
+        browser.maximizeWindow()
         client
             //The set up
             .clickText('Sign up')
@@ -22,19 +25,19 @@ module.exports = {
 
 
         // The action
-        //
-        fillCreate(client, 'E-mail', 'Password', 'First Name', 'Last Name', 'Month', 'Day', 'Year')
-        client.click('@login')
+        fillCreate(client, fillData.email, fillData.password, fillData.createFName, fillData.CreateLName, fillData.createMonth, fillData.createDay, fillData.CreateYear)
+        client.clickText('Sign Up')
         client.userLogout()
+        .waitForElementPresent('.container-fluid',1000)
 
             //the verification
-            .click('@loginText')
-        fillLogin(client, 'E-mail', 'Password')
+            .clickText('Log in')
+        fillLogin(client, fillData.email, fillData.password)
         client.click('@login')
             .waitForElementPresent('@userMenus')
 
 
-        //Navigate to Edit fields
+        //The Set up
         client.waitForElementPresent('.container-fluid', 5000)
 
             .click('@userMenus')
@@ -44,12 +47,11 @@ module.exports = {
             //The Action
             .clearValue('@firstName')
             .clearValue('@lastName')
-            .setValue('@gender', 'f')
             .clearValue('@location')
             .clearValue('@describe')
 
-            //Fill fields to Edit
-        fillEdit(client, 'First', 'Last', 'Sex', 'Month', 'Day', 'Year', 'Location', 'Description')
+
+        fillEdit(client, fillData.firstName, fillData.lastName, fillData.gender, fillData.month, fillData.day, fillData.year, fillData.location, fillData.description)
 
         //Save changes
         client.clickText('Save')
@@ -61,21 +63,26 @@ module.exports = {
 
         client.userLogout(),
             client.waitForElementPresent('.container-fluid', 5000)
+    
+                .clickText('Log in')
 
-                .click('@loginText')
 
-        //Fill Email and Password
-        fillLogin(client, 'E-mail', 'Password')
-        client.click('@login')
-            .waitForElementPresent('@userMenus')
+        fillLogin(client, fillData.email, fillData.password)
+        
+            client.waitForElementPresent('@userMenus')
 
             .click('@userMenus')
             .clickText('Edit Profile')
             .waitForElementPresent('.EditProfile-container-clc6i')
 
-        // Fill fileds to verify
-        client.expect.element('@firstName').to.have.value.that.equals('First')
-        client.expect.element('@lastName').to.have.value.that.equals('Last')
+        // Verification
+        client.expect.element('@firstName').to.have.value.that.equals(fillData.firstName)
+        client.expect.element('@lastName').to.have.value.that.equals(fillData.lastName)
+        client.expect.element('@month').to.have.value.that.equals((parseInt(fillData.month)-1).toString())
+        client.expect.element('@day').to.have.value.that.equals(fillData.day)
+        client.expect.element('@year').to.have.value.that.equals(fillData.year)
+        client.expect.element('@describe').to.have.value.that.equals(fillData.description)
+        client.expect.element('@location').to.have.value.that.equals(fillData.location)
 
 
 
