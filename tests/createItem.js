@@ -9,9 +9,16 @@ module.exports = {
         browser.end()
     },
     'Add an item': browser => {
+        browser.maximizeWindow()
         client.hannahLogin()
-            .clickText('List Your Stuff')
-            .clickText('GET STARTED')
+            client.listYourStuff()
+            client.descriptionInput()
+            client.addressInput()
+            client.priceInput()
+            client.rulesInput()
+            client.availabilityInput()
+            client.photoInput('profilePic.jpg')
+            client.review()
     },
 
 
